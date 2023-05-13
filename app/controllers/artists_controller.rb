@@ -9,7 +9,11 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    artist = Artist.create!(name: params[:name])
+    artist = Artist.create!(artist_params)
     redirect_to "/artists"
+  end
+
+  def artist_params
+    params.permit(:name)#you can put other params in here if artist as more attritbutes
   end
 end
